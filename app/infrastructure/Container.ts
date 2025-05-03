@@ -1,8 +1,10 @@
 import "reflect-metadata";
 import { Container } from "inversify";
-import { UserRepository } from "./UserRepository";
+import {
+  UserRepository,
+  type IUserRepository,
+} from "../repository/UserRepository";
 import { ListUserUseCase } from "../usecase/ListUserUseCase";
-import type { IUserRepository } from "./UserRepository";
 import { TYPES } from "./Types";
 
 const container = new Container();

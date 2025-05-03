@@ -26,7 +26,7 @@ import {
   ChevronRight,
 } from "@mui/icons-material";
 import type { Route } from "./+types/home";
-import container from "../repository/DIContainer";
+import container from "../infrastructure/Container";
 import { ListUserUseCase } from "../usecase/ListUserUseCase";
 
 export const loader = async () => {

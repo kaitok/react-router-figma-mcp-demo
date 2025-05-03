@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { useLoaderData } from "react-router";
 import {
   Box,
   Button,
@@ -25,6 +26,13 @@ import {
   ChevronRight,
 } from "@mui/icons-material";
 import type { Route } from "./+types/home";
+import { ListUserUseCase } from "../usecase/ListUserUseCase";
+
+export const loader = async () => {
+  const useCase = new ListUserUseCase();
+  const data = await useCase.getUsers();
+  return data;
+};
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -34,7 +42,9 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  const [sortOrder, setSortOrder] = useState("asc");
+  const data = useLoaderData();
+
+  const [sortOrder, setSortOrder] = React.useState("asc");
 
   const handleSort = () => {
     setSortOrder((prevOrder) => (prevOrder === "asc" ? "desc" : "asc"));
@@ -100,11 +110,13 @@ export default function Home() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {[...Array(2)].map((_, rowIndex) => (
+                {data.map((item: any, rowIndex: number) => (
                   <TableRow key={rowIndex}>
-                    {columns.map((column, cellIndex) => (
-                      <TableCell key={cellIndex}>{column} value</TableCell>
-                    ))}
+                    <TableCell>{item.id}</TableCell>
+                    <TableCell>{item.name}</TableCell>
+                    <TableCell>{item.email}</TableCell>
+                    <TableCell>{item.created_date}</TableCell>
+                    <TableCell>{item.updated_date}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>

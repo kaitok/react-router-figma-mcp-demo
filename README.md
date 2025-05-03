@@ -1,5 +1,12 @@
 # React Router + Figma MCP Demo
 
+- React Router(v7)
+- Figma MCP
+- MUI
+- Vitest
+- Inversify(DI)
+- Example of using some DDD principles in the backend
+
 ### Figma MCP Setup
 
 Add settings.json and Run Figma MCP server

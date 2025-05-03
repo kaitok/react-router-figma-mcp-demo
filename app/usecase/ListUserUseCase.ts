@@ -1,5 +1,5 @@
 import { inject, injectable } from "inversify";
-import { TYPES } from "../repository/Types";
+import { TYPES } from "../infrastructure/Types";
 import type { IUserRepository } from "../repository/UserRepository";
 
 @injectable()

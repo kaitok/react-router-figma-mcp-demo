@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { Container } from "inversify";
-import { TYPES } from "../app/repository/Types";
+import { TYPES } from "../app/infrastructure/Types";
 import { UserRepository } from "../app/repository/UserRepository";
 import type { IUserRepository } from "../app/repository/UserRepository";
 import { User } from "../app/entity/User";

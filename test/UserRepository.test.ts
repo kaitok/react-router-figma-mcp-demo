@@ -1,10 +1,16 @@
 import { describe, it, expect } from "vitest";
+import { Container } from "inversify";
+import { TYPES } from "../app/repository/Types";
 import { UserRepository } from "../app/repository/UserRepository";
+import type { IUserRepository } from "../app/repository/UserRepository";
 import { User } from "../app/entity/User";
 
-describe("UserRepository", () => {
+describe("UserRepository with inversify", () => {
   it("should fetch user data", async () => {
-    const repository = new UserRepository();
+    const container = new Container();
+    container.bind<IUserRepository>(TYPES.IUserRepository).to(UserRepository);
+
+    const repository = container.get<IUserRepository>(TYPES.IUserRepository);
     const users = await repository.fetchData();
 
     expect(users).toBeInstanceOf(Array);

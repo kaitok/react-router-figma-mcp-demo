@@ -1,10 +1,13 @@
-import { UserRepository } from "../repository/UserRepository";
+import { inject, injectable } from "inversify";
+import { TYPES } from "../repository/Types";
+import type { IUserRepository } from "../repository/UserRepository";
 
+@injectable()
 export class ListUserUseCase {
-  private repository: UserRepository;
+  private repository: IUserRepository;
 
-  constructor() {
-    this.repository = new UserRepository();
+  constructor(@inject(TYPES.IUserRepository) repository: IUserRepository) {
+    this.repository = repository;
   }
 
   async getUsers() {

@@ -1,6 +1,6 @@
 # React Router + Figma MCP Demo
 
-## Stack
+### Stack
 - React Router(v7)
 - Figma MCP
 - MUI
